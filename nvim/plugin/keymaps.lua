@@ -1,0 +1,17 @@
+map = require('me.keymap').map
+
+map('i', 'kj', '<ESC>:w<CR>', { desc = 'Save file without ESC' })
+map('n', '<leader>s', '"_diwP', { desc = 'Stamp default register onto word' })
+map('n', '<Up>', '<Nop>', { desc = 'Disable Up arrow' })
+map('n', '<Down>', '<Nop>', { desc = 'Disable Down arrow' })
+map('n', '<Left>', '<Nop>', { desc = 'Disable Left arrow' })
+map('n', '<Right>', '<Nop>', { desc = 'Disable Right arrow' })
+map('n', '<leader>y', '"+y', { desc = 'Yank to system clipboard' })
+map('v', '<leader>y', '"+y', { desc = 'Yank to system clipboard' })
+map('n', 'n', 'nzzzv', { desc = 'Next search result centered' })
+map('n', 'N', 'Nzzzv', { desc = 'Previous search result centered' })
+map('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
+map('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
+map('n', 'J', 'mzJ`z', { desc = 'Join lines without moving cursor' })
+map('n', '<C-d>', '<C-d>zz', { desc = 'Scroll down and center' })
+map('n', '<C-u>', '<C-u>zz', { desc = 'Scroll up and center' })

@@ -28,20 +28,24 @@ with final.pkgs.lib; let
 
     # --- Navigation ---
     nvim-treesitter.withAllGrammars
-    nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
-    nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
+    # nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
+    # nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
+    #
+    # # --- LSP ---
+    nvim-lspconfig
 
-    # --- LSP ---
-    # --- CMP ---
-    nvim-cmp # https://github.com/hrsh7th/nvim-cmp
-    cmp-nvim-lsp # LSP as completion source | https://github.com/hrsh7th/cmp-nvim-lsp/
-    cmp-buffer # current buffer as completion source | https://github.com/hrsh7th/cmp-buffer/
-    cmp-path # file paths as completion source | https://github.com/hrsh7th/cmp-path/
-    cmp-nvim-lua # neovim lua API as completion source | https://github.com/hrsh7th/cmp-nvim-lua/
-    cmp-cmdline # cmp command line suggestions | https://github.com/hrsh7th/cmp-cmdline
-    cmp-cmdline-history # cmp command line history suggestions
 
-    luasnip # snippets | https://github.com/l3mon4d3/luasnip/
+
+    # nvim-cmp # https://github.com/hrsh7th/nvim-cmp
+    # cmp-nvim-lsp # LSP as completion source | https://github.com/hrsh7th/cmp-nvim-lsp/
+    # cmp-buffer # current buffer as completion source | https://github.com/hrsh7th/cmp-buffer/
+    # cmp-path # file paths as completion source | https://github.com/hrsh7th/cmp-path/
+    # cmp-nvim-lua # neovim lua API as completion source | https://github.com/hrsh7th/cmp-nvim-lua/
+    # cmp-cmdline # cmp command line suggestions | https://github.com/hrsh7th/cmp-cmdline
+    # cmp-cmdline-history # cmp command line history suggestions
+    # nvim-navic # | show context on location https://github.com/SmiteshP/nvim-navic
+    #
+    # luasnip # snippets | https://github.com/l3mon4d3/luasnip/
 
     # --- GIT ---
     gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
