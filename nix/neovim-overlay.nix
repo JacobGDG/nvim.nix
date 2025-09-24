@@ -28,8 +28,8 @@ with final.pkgs.lib; let
 
     # --- Navigation ---
     nvim-treesitter.withAllGrammars
-    # nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
-    # nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
+    nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
+    nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
     #
     # # --- LSP ---
     nvim-lspconfig
