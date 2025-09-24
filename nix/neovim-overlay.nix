@@ -52,8 +52,8 @@ with final.pkgs.lib; let
     # luasnip # snippets | https://github.com/l3mon4d3/luasnip/
 
     # --- GIT ---
-    gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
-    neogit
+    gitsigns-nvim # | https://github.com/lewis6991/gitsigns.nvim/
+    committia # git commit UI template | https://github.com/rhysd/committia.vim
     # --- Utils ---
     undotree
 
