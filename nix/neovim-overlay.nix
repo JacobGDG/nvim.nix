@@ -24,9 +24,32 @@ with final.pkgs.lib; let
   # }
   # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins
   all-plugins = with pkgs.vimPlugins; [
-    lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
     oil-nvim # Buffer based file explorer | https://github.com/stevearc/oil.nvim
 
+    # --- Navigation ---
+    nvim-treesitter.withAllGrammars
+    nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
+    nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
+
+    # --- LSP ---
+    # --- CMP ---
+    nvim-cmp # https://github.com/hrsh7th/nvim-cmp
+    cmp-nvim-lsp # LSP as completion source | https://github.com/hrsh7th/cmp-nvim-lsp/
+    cmp-buffer # current buffer as completion source | https://github.com/hrsh7th/cmp-buffer/
+    cmp-path # file paths as completion source | https://github.com/hrsh7th/cmp-path/
+    cmp-nvim-lua # neovim lua API as completion source | https://github.com/hrsh7th/cmp-nvim-lua/
+    cmp-cmdline # cmp command line suggestions | https://github.com/hrsh7th/cmp-cmdline
+    cmp-cmdline-history # cmp command line history suggestions
+
+    luasnip # snippets | https://github.com/l3mon4d3/luasnip/
+
+    # --- GIT ---
+    gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
+    neogit
+    # --- Shortcuts ---
+
+    # --- UI ---
+    lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
     mini-icons # | https://github.com/nvim-mini/mini.icons/
   ];
 
