@@ -1,6 +1,6 @@
 map = require('me.keymap').map
 
-map('i', 'kj', '<ESC>:w<CR>', { desc = 'Save file without ESC' })
+map('i', 'kj', '<ESC>:w<CR>', { desc = 'Save file without ESC', silent = false })
 map('n', '<leader>s', '"_diwP', { desc = 'Stamp default register onto word' })
 map('n', '<Up>', '<Nop>', { desc = 'Disable Up arrow' })
 map('n', '<Down>', '<Nop>', { desc = 'Disable Down arrow' })
