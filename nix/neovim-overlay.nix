@@ -56,7 +56,7 @@ with final.pkgs.lib; let
     committia # git commit UI template | https://github.com/rhysd/committia.vim
     # --- Utils ---
     undotree
-
+    vim-abolish # primarity for case switching | https://github.com/tpope/vim-abolish#coercion
     # --- UI ---
     lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
     mini-icons # | https://github.com/nvim-mini/mini.icons/
