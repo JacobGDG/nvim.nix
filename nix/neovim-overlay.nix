@@ -28,8 +28,13 @@ with final.pkgs.lib; let
 
     # --- Navigation ---
     nvim-treesitter.withAllGrammars
+    nvim-treesitter-context # nvim-treesitter-context | https://github.com/nvim-treesitter/nvim-treesitter-context 
     nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
     nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
+
+    fzf-lua # | https://github.com/ibhagwan/fzf-lua
+
+    smart-splits-nvim # TMUX navigation | https://github.com/mrjones2014/smart-splits.nvim
     #
     # # --- LSP ---
     nvim-lspconfig
@@ -43,7 +48,6 @@ with final.pkgs.lib; let
     # cmp-nvim-lua # neovim lua API as completion source | https://github.com/hrsh7th/cmp-nvim-lua/
     # cmp-cmdline # cmp command line suggestions | https://github.com/hrsh7th/cmp-cmdline
     # cmp-cmdline-history # cmp command line history suggestions
-    # nvim-navic # | show context on location https://github.com/SmiteshP/nvim-navic
     #
     # luasnip # snippets | https://github.com/l3mon4d3/luasnip/
 
