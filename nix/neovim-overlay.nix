@@ -50,7 +50,8 @@ with final.pkgs.lib; let
     # --- GIT ---
     gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
     neogit
-    # --- Shortcuts ---
+    # --- Utils ---
+    undotree
 
     # --- UI ---
     lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
