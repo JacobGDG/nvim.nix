@@ -76,6 +76,7 @@ with final.pkgs.lib; let
     lua-language-server
     nil # nix LSP
     terraform-ls # | https://github.com/hashicorp/terraform-ls
+    ruby-lsp
   ];
 in {
   nvim-pkg = mkNeovim {
