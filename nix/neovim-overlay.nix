@@ -65,6 +65,9 @@ with final.pkgs.lib; let
     lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
     mini-icons # | https://github.com/nvim-mini/mini.icons/
     bufresize-nvim
+
+
+    snacks-nvim # a few things | https://github.com/folke/snacks.nvim/
   ];
 
   extraPackages = with pkgs; [
