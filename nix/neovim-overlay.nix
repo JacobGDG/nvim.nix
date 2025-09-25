@@ -30,7 +30,6 @@ with final.pkgs.lib; let
     nvim-treesitter.withAllGrammars
     nvim-treesitter-context # nvim-treesitter-context | https://github.com/nvim-treesitter/nvim-treesitter-context 
     nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
-    nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
 
     fzf-lua # | https://github.com/ibhagwan/fzf-lua
 
@@ -54,9 +53,14 @@ with final.pkgs.lib; let
     # --- GIT ---
     gitsigns-nvim # | https://github.com/lewis6991/gitsigns.nvim/
     committia # git commit UI template | https://github.com/rhysd/committia.vim
-    # --- Utils ---
+    # --- Coding ---
     undotree
     vim-abolish # primarity for case switching | https://github.com/tpope/vim-abolish#coercion
+
+    # COMMENTS
+    mini-comment # | https://github.com/nvim-mini/mini.comment/
+    nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
+    ts-comments-nvim #  customize comment string | https://github.com/folke/ts-comments.nvim/
     # --- UI ---
     lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
     mini-icons # | https://github.com/nvim-mini/mini.icons/
