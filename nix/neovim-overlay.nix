@@ -67,11 +67,15 @@ with final.pkgs.lib; let
 
 
     snacks-nvim # a few things | https://github.com/folke/snacks.nvim/
+
+    # --- THEME ---
+    gruvbox-material # | https://github.com/sainnhe/gruvbox-material/
   ];
 
   extraPackages = with pkgs; [
     lua-language-server
     nil # nix LSP
+    terraform-ls # | https://github.com/hashicorp/terraform-ls
   ];
 in {
   nvim-pkg = mkNeovim {
