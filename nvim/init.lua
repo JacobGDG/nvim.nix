@@ -26,4 +26,4 @@ vim.opt.cursorline = true
 vim.opt.colorcolumn = "+1"
 
 vim.opt.showcmd = true
-vim.opt.wildmode = longest,list
+vim.opt.wildmode = 'longest,list'

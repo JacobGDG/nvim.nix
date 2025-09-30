@@ -24,4 +24,3 @@ autocmd({"BufLeave", "FocusLost", "InsertEnter"}, {
     pattern = "*",
     command = "set norelativenumber",
   })
-
