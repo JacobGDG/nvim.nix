@@ -70,6 +70,9 @@ with final.pkgs.lib; let
 
     # --- THEME ---
     gruvbox-material # | https://github.com/sainnhe/gruvbox-material/
+
+    # --- LIBRARY ---
+    plenary-nvim # "lua functions you don't want to write" namely `curl` | https://github.com/nvim-lua/plenary.nvim
   ];
 
   extraPackages = with pkgs; [
