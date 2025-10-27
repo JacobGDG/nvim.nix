@@ -10,7 +10,7 @@ require('snacks').setup {
   zen = {
     enabled = true,
     toggles = {
-      dim = true,
+      dim = false,
     }
   },
   dim = { },
