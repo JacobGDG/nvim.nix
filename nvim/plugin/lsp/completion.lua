@@ -31,9 +31,10 @@ cmp.setup {
   },
   formatting = {
     format = lspkind.cmp_format {
-      mode = 'symbol_text',
+      mode = 'text',
       with_text = true,
       maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      max_height = 3,
       ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
 
       menu = {
@@ -46,6 +47,9 @@ cmp.setup {
         luasnip = '[SNIP]',
       },
     },
+  },
+  performance = {
+    max_view_entries = 10,
   },
   snippet = {
     expand = function(args)
@@ -87,14 +91,6 @@ cmp.setup {
         luasnip.jump(-1)
       else
         fallback()
-      end
-    end, { 'i', 'c', 's' }),
-    -- toggle completion
-    ['<C-e>'] = cmp.mapping(function(_)
-      if cmp.visible() then
-        cmp.close()
-      else
-        cmp.complete()
       end
     end, { 'i', 'c', 's' }),
     ['<C-y>'] = cmp.mapping.confirm {
