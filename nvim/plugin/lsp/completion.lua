@@ -3,6 +3,8 @@ if vim.g.did_load_completion_plugin then
 end
 vim.g.did_load_completion_plugin = true
 
+local map = require('me.keymap').map
+
 local cmp = require('cmp')
 local lspkind = require('lspkind')
 local luasnip = require('luasnip')
@@ -45,6 +47,7 @@ cmp.setup {
         nvim_lua = '[API]',
         path = '[PATH]',
         luasnip = '[SNIP]',
+        emoji = '[EMOJI]',
       },
     },
   },
@@ -53,7 +56,7 @@ cmp.setup {
   },
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      luasnip.lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
   mapping = {
@@ -144,16 +147,17 @@ cmp.setup.cmdline(':', {
   },
 })
 
-vim.keymap.set({ 'i', 'c', 's' }, '<C-n>', cmp.complete, { noremap = false, desc = '[cmp] complete' })
-vim.keymap.set({ 'i', 'c', 's' }, '<C-f>', function()
-  complete_with_source('path')
-end, { noremap = false, desc = '[cmp] path' })
-vim.keymap.set({ 'i', 'c', 's' }, '<C-o>', function()
-  complete_with_source('nvim_lsp')
-end, { noremap = false, desc = '[cmp] lsp' })
-vim.keymap.set({ 'c' }, '<C-h>', function()
-  complete_with_source('cmdline_history')
-end, { noremap = false, desc = '[cmp] cmdline history' })
-vim.keymap.set({ 'c' }, '<C-c>', function()
-  complete_with_source('cmdline')
-end, { noremap = false, desc = '[cmp] cmdline' })
+-- Basic completion in markdown files, and gitcommits
+cmp.setup.filetype({'markdown', 'gitcommit'}, {
+  sources = cmp.config.sources {
+    { name = 'buffer' },
+    { name = 'emoji' },
+    { name = 'path' },
+  }
+})
+
+map({ 'i', 'c', 's' }, '<C-n>', cmp.complete, {  desc = '[cmp] complete' })
+map({ 'i', 'c', 's' }, '<C-f>', function() complete_with_source('path') end, { desc = '[cmp] path' })
+map({ 'i', 'c', 's' }, '<C-o>', function() complete_with_source('nvim_lsp') end, {  desc = '[cmp] lsp' })
+map({ 'c' }, '<C-h>', function() complete_with_source('cmdline_history') end, {  desc = '[cmp] cmdline history' })
+map({ 'c' }, '<C-c>', function() complete_with_source('cmdline') end, {  desc = '[cmp] cmdline' })
