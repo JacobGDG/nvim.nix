@@ -6,6 +6,7 @@ vim.g.did_load_completion_plugin = true
 local map = require('me.keymap').map
 
 local cmp = require('cmp')
+local context = require("cmp.config.context")
 local lspkind = require('lspkind')
 local luasnip = require('luasnip')
 
@@ -35,7 +36,7 @@ cmp.setup {
     format = lspkind.cmp_format {
       mode = 'text',
       with_text = true,
-      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
       max_height = 3,
       ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
 
@@ -77,8 +78,8 @@ cmp.setup {
     ['<C-n>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      -- expand_or_jumpable(): Jump outside the snippet region
-      -- expand_or_locally_jumpable(): Only jump inside the snippet region
+        -- expand_or_jumpable(): Jump outside the snippet region
+        -- expand_or_locally_jumpable(): Only jump inside the snippet region
       elseif luasnip.expand_or_locally_jumpable() then
         luasnip.expand_or_jump()
       elseif has_words_before() then
@@ -102,7 +103,7 @@ cmp.setup {
   },
   sources = cmp.config.sources {
     -- The insertion order influences the priority of the sources
-    { name = 'nvim_lsp', keyword_length = 3 },
+    { name = 'nvim_lsp',                keyword_length = 3 },
     { name = 'nvim_lsp_signature_help', keyword_length = 3 },
     { name = 'buffer' },
     { name = 'path' },
@@ -121,6 +122,12 @@ cmp.setup.filetype('lua', {
     { name = 'nvim_lua' },
     { name = 'nvim_lsp', keyword_length = 3 },
     { name = 'path' },
+    {
+      name = 'emoji',
+      entry_filter = function(_, _)
+        return context.in_treesitter_capture("comment")
+      end
+    },
   },
 })
 
@@ -148,7 +155,7 @@ cmp.setup.cmdline(':', {
 })
 
 -- Basic completion in markdown files, and gitcommits
-cmp.setup.filetype({'markdown', 'gitcommit'}, {
+cmp.setup.filetype({ 'markdown', 'gitcommit' }, {
   sources = cmp.config.sources {
     { name = 'buffer' },
     { name = 'emoji' },
@@ -156,8 +163,8 @@ cmp.setup.filetype({'markdown', 'gitcommit'}, {
   }
 })
 
-map({ 'i', 'c', 's' }, '<C-n>', cmp.complete, {  desc = '[cmp] complete' })
+map({ 'i', 'c', 's' }, '<C-n>', cmp.complete, { desc = '[cmp] complete' })
 map({ 'i', 'c', 's' }, '<C-f>', function() complete_with_source('path') end, { desc = '[cmp] path' })
-map({ 'i', 'c', 's' }, '<C-o>', function() complete_with_source('nvim_lsp') end, {  desc = '[cmp] lsp' })
-map({ 'c' }, '<C-h>', function() complete_with_source('cmdline_history') end, {  desc = '[cmp] cmdline history' })
-map({ 'c' }, '<C-c>', function() complete_with_source('cmdline') end, {  desc = '[cmp] cmdline' })
+map({ 'i', 'c', 's' }, '<C-o>', function() complete_with_source('nvim_lsp') end, { desc = '[cmp] lsp' })
+map({ 'c' }, '<C-h>', function() complete_with_source('cmdline_history') end, { desc = '[cmp] cmdline history' })
+map({ 'c' }, '<C-c>', function() complete_with_source('cmdline') end, { desc = '[cmp] cmdline' })
