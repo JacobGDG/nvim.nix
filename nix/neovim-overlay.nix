@@ -80,6 +80,7 @@ with final.pkgs.lib; let
     nil # nix LSP
     terraform-ls # | https://github.com/hashicorp/terraform-ls
     ruby-lsp
+    yaml-language-server
   ];
 in {
   nvim-pkg = mkNeovim {
