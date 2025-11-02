@@ -11,8 +11,8 @@ with final.pkgs.lib; let
 
   pkgs-locked = inputs.nixpkgs.legacyPackages.${pkgs.system};
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {
-      inherit (pkgs-locked) wrapNeovimUnstable neovimUtils;
-    };
+    inherit (pkgs-locked) wrapNeovimUnstable neovimUtils;
+  };
 
   # A plugin can either be a package or an attrset, such as
   # { plugin = <plugin>; # the package, e.g. pkgs.vimPlugins.nvim-cmp
@@ -28,14 +28,14 @@ with final.pkgs.lib; let
 
     # --- Navigation ---
     nvim-treesitter.withAllGrammars
-    nvim-treesitter-context # nvim-treesitter-context | https://github.com/nvim-treesitter/nvim-treesitter-context 
+    nvim-treesitter-context # nvim-treesitter-context | https://github.com/nvim-treesitter/nvim-treesitter-context
     nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
 
     fzf-lua # | https://github.com/ibhagwan/fzf-lua
 
     smart-splits-nvim # TMUX navigation | https://github.com/mrjones2014/smart-splits.nvim
     #
-    # # --- LSP ---
+    # --- LSP ---
     nvim-lspconfig
 
     nvim-cmp # https://github.com/hrsh7th/nvim-cmp
@@ -49,6 +49,9 @@ with final.pkgs.lib; let
     cmp-cmdline # cmp command line suggestions
     cmp-cmdline-history # cmp command line history suggestions
     cmp-emoji # cmp for emojies | https://github.com/hrsh7th/cmp-emoji/
+
+    # --- Formatter ---
+    conform-nvim
 
     # --- GIT ---
     gitsigns-nvim # | https://github.com/lewis6991/gitsigns.nvim/
@@ -76,6 +79,7 @@ with final.pkgs.lib; let
   ];
 
   extraPackages = with pkgs; [
+    # LSPs
     lua-language-server
     nil # nix LSP
     terraform-ls # | https://github.com/hashicorp/terraform-ls

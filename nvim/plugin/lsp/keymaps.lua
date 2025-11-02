@@ -30,10 +30,6 @@ autocmd('LspAttach', {
     map('n', '<M-CR>', vim.lsp.buf.code_action, { desc = '[lsp] code action', buffer = bufnr })
     -- localmap('n', '<M-l>', vim.lsp.codelens.run, { desc = '[lsp] run code lens', buffer = bufnr })
     -- localmap('n', '<leader>cr', vim.lsp.codelens.refresh, { desc = 'lsp [c]ode lenses [r]efresh', buffer = bufnr })
-    map('n', '<leader>F', function()
-
-      vim.lsp.buf.format { async = true }
-    end, { desc = '[lsp] [f]ormat buffer', buffer = bufnr })
     if client and client.server_capabilities.inlayHintProvider then
       map('n', '<leader>h', function()
         local current_setting = vim.lsp.inlay_hint.is_enabled { bufnr = bufnr }
