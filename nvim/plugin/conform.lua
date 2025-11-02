@@ -1,10 +1,10 @@
 local map = require('me.keymap').map
 local conform = require('conform')
 
-conform.setup({
+conform.setup {
   lsp_format = 'fallback',
   format_on_save = {
-    lsp_format = "fallback",
+    lsp_format = 'fallback',
     timeout_ms = 500,
   },
   formatters_by_ft = {
@@ -13,8 +13,8 @@ conform.setup({
     terraform = { 'tofu_fmt', 'terraform_fmt', stop_after_first = true },
     ruby = { 'rubocop' },
   },
-})
+}
 
 map('n', '<leader>F', function()
-  conform.format({ async = true })
+  conform.format { async = true }
 end, { desc = '[lsp] [f]ormat buffer' })

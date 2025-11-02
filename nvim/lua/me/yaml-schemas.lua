@@ -5,7 +5,7 @@
   We should also look at making the queries async
 ]]
 
-local curl = require 'plenary.curl'
+local curl = require('plenary.curl')
 
 local sources = {
   native = {
@@ -17,7 +17,7 @@ local sources = {
     schemas_catalog = 'datreeio/CRDs-catalog',
     branch = 'main',
     select_prefix = 'CRD: ',
-  }
+  },
 }
 
 local list_github_tree = function(source)
@@ -32,7 +32,7 @@ local list_github_tree = function(source)
   local body = vim.fn.json_decode(response.body)
   local trees = {}
   for _, tree in ipairs(body.tree) do
-    if tree.type == 'blob' and tree.path:match '%.json$' then
+    if tree.type == 'blob' and tree.path:match('%.json$') then
       table.insert(trees, source.select_prefix .. tree.path)
     end
   end
@@ -41,7 +41,6 @@ end
 
 local select_schema = function(schemas)
   vim.ui.select(schemas, { prompt = 'Select schema: ' }, function(selection)
-
     if not selection then
       vim.notify('Canceled schema selection.', vim.log.levels.INFO)
       return
@@ -59,7 +58,12 @@ local select_schema = function(schemas)
 
     local selection_path = selection:gsub('^' .. source.select_prefix, '')
 
-    local schema_url = 'https://raw.githubusercontent.com/' .. source.schemas_catalog .. '/' .. source.branch .. '/' .. selection_path
+    local schema_url = 'https://raw.githubusercontent.com/'
+      .. source.schemas_catalog
+      .. '/'
+      .. source.branch
+      .. '/'
+      .. selection_path
     local schema_modeline = '# yaml-language-server: $schema=' .. schema_url
     vim.api.nvim_buf_set_lines(0, 0, 0, false, {
       schema_modeline,
@@ -70,13 +74,11 @@ local select_schema = function(schemas)
 end
 
 return {
-  select = function ()
+  select = function()
     local crds = list_github_tree(sources.crds)
     local native = list_github_tree(sources.native)
     local all_schemas = vim.list_extend(crds, native)
 
     select_schema(all_schemas)
-  end
+  end,
 }
-
-

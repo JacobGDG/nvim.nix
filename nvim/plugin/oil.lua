@@ -3,36 +3,36 @@ require('oil').setup {
   view_options = {
     show_hidden = true,
     is_always_hidden = function(name)
-      return name == ".."
+      return name == '..'
     end,
   },
 
   use_default_keymaps = false,
   keymaps = {
-    ["g?"] = "actions.show_help",
-    ["<CR>"] = "actions.select",
-    ["<leader>v"] = { "actions.select", opts = { vertical = true } },
-    ["-"] = "actions.parent",
-    ["~"] = "actions.open_cwd",
-    ["g."] = "actions.toggle_hidden",
-    ["<leader>l"] = "actions.refresh",
+    ['g?'] = 'actions.show_help',
+    ['<CR>'] = 'actions.select',
+    ['<leader>v'] = { 'actions.select', opts = { vertical = true } },
+    ['-'] = 'actions.parent',
+    ['~'] = 'actions.open_cwd',
+    ['g.'] = 'actions.toggle_hidden',
+    ['<leader>l'] = 'actions.refresh',
     ['yp'] = {
       desc = 'Copy filepath to system clipboard',
-      callback = function ()
+      callback = function()
         local entry = require('oil').get_cursor_entry()
         local dir = require('oil').get_current_dir()
         local name = entry.name
-        if entry.type == "directory" then
-          name = name .. "/"
+        if entry.type == 'directory' then
+          name = name .. '/'
         end
         local ab_path = dir .. name
-        local rel_path = vim.fn.fnamemodify(ab_path, ":.")
-        vim.fn.setreg("+", rel_path)
+        local rel_path = vim.fn.fnamemodify(ab_path, ':.')
+        vim.fn.setreg('+', rel_path)
       end,
     },
-    ['cd']= {
+    ['cd'] = {
       desc = 'CD into this directory in TMUX pane 2',
-      callback = function ()
+      callback = function()
         local dir = require('oil').get_current_dir()
         io.popen(string.format('tmux send-keys -t :.$(tmux-other-pane) "cd %s" Enter', dir))
         io.popen('tmux select-pane -t :.$(tmux-other-pane)')
@@ -42,4 +42,4 @@ require('oil').setup {
 }
 
 local map = require('me.keymap').map
-map("n", "-", "<CMD>Oil<CR>", { desc = "Open Oil" })
+map('n', '-', '<CMD>Oil<CR>', { desc = 'Open Oil' })

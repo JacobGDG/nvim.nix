@@ -12,9 +12,9 @@ vim.g.committia_hooks = {
     map('i', '<C-u>', '<Plug>(committia-scroll-diff-up-half)', { buffer = vim.api.nvim_get_current_buf() })
     map('n', '<C-u>', '<Plug>(committia-scroll-diff-up-half)', { buffer = vim.api.nvim_get_current_buf() })
 
-    vim.cmd("highlight ColorColumn ctermbg=0 guibg=DarkGreen")
-    vim.cmd("setlocal spell")
+    vim.cmd('highlight ColorColumn ctermbg=0 guibg=DarkGreen')
+    vim.cmd('setlocal spell')
 
-    vim.api.nvim_set_option_value("colorcolumn", "51", {})
+    vim.api.nvim_set_option_value('colorcolumn', '51', {})
   end,
 }
