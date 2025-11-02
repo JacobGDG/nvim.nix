@@ -81,7 +81,6 @@ with final.pkgs.lib; let
   extraPackages = with pkgs; [
     # LSPs
     lua-language-server
-    nil # nix LSP
     terraform-ls # | https://github.com/hashicorp/terraform-ls
     ruby-lsp
     yaml-language-server
