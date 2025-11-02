@@ -34,7 +34,7 @@ with final.pkgs.lib; let
     fzf-lua # | https://github.com/ibhagwan/fzf-lua
 
     smart-splits-nvim # TMUX navigation | https://github.com/mrjones2014/smart-splits.nvim
-    #
+
     # --- LSP ---
     nvim-lspconfig
 
@@ -50,20 +50,25 @@ with final.pkgs.lib; let
     cmp-cmdline-history # cmp command line history suggestions
     cmp-emoji # cmp for emojies | https://github.com/hrsh7th/cmp-emoji/
 
+    luasnip # | https://github.com/L3MON4D3/LuaSnip
+    friendly-snippets
+
     # --- Formatter ---
     conform-nvim
 
     # --- GIT ---
     gitsigns-nvim # | https://github.com/lewis6991/gitsigns.nvim/
     committia # git commit UI template | https://github.com/rhysd/committia.vim
+
     # --- Coding ---
     undotree
-    vim-abolish # primarity for case switching | https://github.com/tpope/vim-abolish#coercion
+    vim-abolish # primarily for case switching | https://github.com/tpope/vim-abolish#coercion
 
     # COMMENTS
     mini-comment # | https://github.com/nvim-mini/mini.comment/
     nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
     ts-comments-nvim #  customize comment string | https://github.com/folke/ts-comments.nvim/
+
     # --- UI ---
     lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
     mini-icons # | https://github.com/nvim-mini/mini.icons/
