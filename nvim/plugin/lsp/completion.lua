@@ -27,6 +27,53 @@ local function complete_with_source(source)
   end
 end
 
+local function merge(...)
+  local result = {}
+  -- For each source table
+  for _, t in ipairs { ... } do
+    -- For each pair in t
+    for k, v in pairs(t) do
+      result[k] = v
+    end
+  end
+  return result
+end
+
+local sources = {
+  code_default = cmp.config.sources {
+    { name = 'nvim_lsp', keyword_length = 3 },
+    { name = 'nvim_lsp_signature_help', keyword_length = 3 },
+    { name = 'luasnip' },
+    { name = 'buffer' },
+    { name = 'path' },
+  },
+  lua = cmp.config.sources {
+    { name = 'nvim_lua' },
+  },
+  text = cmp.config.sources {
+    { name = 'buffer' },
+    { name = 'emoji' },
+    { name = 'path' },
+    {
+      name = 'spell',
+      keyword_length = 3,
+      enable_in_context = function(_)
+        return context.in_treesitter_capture('spell')
+      end,
+    },
+  },
+  cmdline = cmp.config.sources {
+    { name = 'cmdline' },
+    { name = 'cmdline_history' },
+    { name = 'path' },
+  },
+  search = cmp.config.sources {
+    { name = 'nvim_lsp_document_symbol', keyword_length = 3 },
+    { name = 'buffer' },
+    { name = 'cmdline_history' },
+  },
+}
+
 cmp.setup {
   completion = {
     completeopt = 'menu,menuone,noinsert',
@@ -49,6 +96,7 @@ cmp.setup {
         path = '[PATH]',
         luasnip = '[SNIP]',
         emoji = '[EMOJI]',
+        spell = '[DICT]',
       },
     },
   },
@@ -101,14 +149,7 @@ cmp.setup {
       select = true,
     },
   },
-  sources = cmp.config.sources {
-    -- The insertion order influences the priority of the sources
-    { name = 'nvim_lsp', keyword_length = 3 },
-    { name = 'nvim_lsp_signature_help', keyword_length = 3 },
-    { name = 'buffer' },
-    { name = 'path' },
-    { name = 'luasnip' },
-  },
+  sources = sources.code_default,
   enabled = function()
     return vim.bo[0].buftype ~= 'prompt'
   end,
@@ -119,27 +160,13 @@ cmp.setup {
 }
 
 cmp.setup.filetype('lua', {
-  sources = cmp.config.sources {
-    { name = 'nvim_lua' },
-    { name = 'nvim_lsp', keyword_length = 3 },
-    { name = 'path' },
-    {
-      name = 'emoji',
-      entry_filter = function(_, _)
-        return context.in_treesitter_capture('comment')
-      end,
-    },
-  },
+  sources = merge(sources.code_default, sources.lua),
 })
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
   mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'nvim_lsp_document_symbol', keyword_length = 3 },
-    { name = 'buffer' },
-    { name = 'cmdline_history' },
-  },
+  sources = sources.search,
   view = {
     entries = { name = 'wildmenu', separator = '|' },
   },
@@ -148,20 +175,12 @@ cmp.setup.cmdline({ '/', '?' }, {
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources {
-    { name = 'cmdline' },
-    { name = 'cmdline_history' },
-    { name = 'path' },
-  },
+  sources = sources.cmdline,
 })
 
 -- Basic completion in markdown files, and gitcommits
 cmp.setup.filetype({ 'markdown', 'gitcommit' }, {
-  sources = cmp.config.sources {
-    { name = 'buffer' },
-    { name = 'emoji' },
-    { name = 'path' },
-  },
+  sources = sources.text,
 })
 
 map({ 'i', 'c', 's' }, '<C-n>', cmp.complete, { desc = '[cmp] complete' })
