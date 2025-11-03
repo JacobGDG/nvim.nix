@@ -12,6 +12,7 @@ conform.setup {
     nix = { 'alejandra' },
     terraform = { 'tofu_fmt', 'terraform_fmt', stop_after_first = true },
     ruby = { 'rubocop' },
+    rust = { 'rustfmt' },
   },
 }
 

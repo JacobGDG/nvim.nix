@@ -6,3 +6,4 @@ vim.lsp.enable('nil_ls') -- nix
 vim.lsp.enable('terraformls')
 vim.lsp.enable('ruby_lsp')
 vim.lsp.enable('yamlls')
+vim.lsp.enable('rust_analyzer')
