@@ -4,6 +4,7 @@ end
 vim.g.did_load_completion_plugin = true
 
 local map = require('me.keymap').map
+local merge = require('me.tables').merge
 
 local cmp = require('cmp')
 local context = require('cmp.config.context')
@@ -25,18 +26,6 @@ local function complete_with_source(source)
   elseif type(source) == 'table' then
     cmp.complete { config = { sources = { source } } }
   end
-end
-
-local function merge(...)
-  local result = {}
-  -- For each source table
-  for _, t in ipairs { ... } do
-    -- For each pair in t
-    for k, v in pairs(t) do
-      result[k] = v
-    end
-  end
-  return result
 end
 
 local sources = {
