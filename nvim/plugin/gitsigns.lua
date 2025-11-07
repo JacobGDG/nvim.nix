@@ -4,11 +4,6 @@ end
 vim.g.did_load_gitsigns_plugin = true
 
 local map = require('me.keymap').map
-local function localmap(mode, l, r, opts)
-  opts = opts or {}
-  opts.buffer = bufnr
-  map(mode, l, r, opts)
-end
 
 vim.schedule(function()
   require('gitsigns').setup {
@@ -17,15 +12,18 @@ vim.schedule(function()
       ignore_whitespace = true,
     },
     on_attach = function(bufnr)
-      local gs = package.loaded.gitsigns
+      local gitsigns = package.loaded.gitsigns
 
-      local opts = { buffer = bufnr }
-
-      localmap('n', '<leader>hb', function()
-        gs.blame_line { full = true }
-      end, { desc = 'git [h] [b]lame line (full)' })
-      localmap('n', '<leader>lb', gs.toggle_current_line_blame, { desc = '[g]it toggle current [l]ine [b]lame' })
-      localmap('n', '<leader>hd', gs.diffthis, { desc = 'git [h] [d]iff this' })
+      map('n', '<leader>hb', function()
+        gitsigns.blame_line { full = true }
+      end, { desc = 'git [h] [b]lame line (full)', buffer = bufnr })
+      map(
+        'n',
+        '<leader>lb',
+        gitsigns.toggle_current_line_blame,
+        { desc = 'git toggle current [l]ine [b]lame', buffer = bufnr }
+      )
+      map('n', '<leader>hd', gitsigns.diffthis, { desc = 'git [h] [d]iff this', buffer = bufnr })
     end,
   }
 end)
