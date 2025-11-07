@@ -8,7 +8,7 @@ autocmd('TextYankPost', {
   desc = 'Highlight yanked text for clarity',
   callback = function()
     vim.highlight.on_yank {
-      higroup = 'IncSearch',
+      higroup = 'Visual',
       timeout = 200,
     }
   end,
@@ -31,4 +31,10 @@ autocmd({ 'VimResized' }, {
   group = my_group,
   desc = 'Auto size windows on terminal resize',
   command = 'wincmd =',
+})
+
+autocmd('FileType', {
+  pattern = 'help',
+  desc = 'Open help in veritical window instead of horizontal',
+  command = 'wincmd L',
 })
