@@ -1,4 +1,5 @@
-map = require('me.keymap').map
+local map = require('me.keymap').map
+local cabbrev = require('me.keymap').cabbrev
 
 map('i', 'kj', '<ESC>:w<CR>', { desc = 'Save file without ESC', silent = false })
 map('n', '<leader>s', '"_ciw<C-R>"<Esc>', { desc = 'Stamp default register onto word' })
@@ -18,3 +19,8 @@ map('n', '<C-u>', '<C-u>zz', { desc = 'Scroll up and center' })
 map('n', '<leader>ys', function()
   require('me.yaml-schemas').select()
 end, { desc = 'Set [Y]aml [S]chema comment' })
+
+-- fingers and thumbs
+cabbrev('W', 'w')
+cabbrev('Q', 'q')
+cabbrev('Wq', 'wq')

@@ -9,4 +9,8 @@ M.map = function(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, options)
 end
 
+M.cabbrev = function(from, to)
+  vim.cmd(string.format('cabbrev %s %s', from, to))
+end
+
 return M
