@@ -38,3 +38,14 @@ autocmd('FileType', {
   desc = 'Open help in veritical window instead of horizontal',
   command = 'wincmd L',
 })
+
+autocmd('CmdlineEnter', {
+  group = my_group,
+  desc = 'Enable search highlight during search',
+  command = 'set hlsearch',
+})
+autocmd('CmdlineLeave', {
+  group = my_group,
+  desc = 'Disable search highlight when leaving search',
+  command = 'set nohlsearch',
+})
