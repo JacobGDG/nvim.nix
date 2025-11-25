@@ -91,6 +91,7 @@ with final.pkgs.lib; let
     terraform-ls # | https://github.com/hashicorp/terraform-ls
     ruby-lsp
     yaml-language-server
+    docker-language-server
   ];
 in {
   nvim-pkg = mkNeovim {
