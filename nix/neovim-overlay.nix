@@ -52,6 +52,9 @@ with final.pkgs.lib; let
     cmp-path # file paths as completion source | https://github.com/hrsh7th/cmp-path/
     cmp-spell # | https://github.com/f3fora/cmp-spell
     cmp_luasnip # snippets autocompletion extension for nvim-cmp | https://github.com/saadparwaiz1/cmp_luasnip/
+    copilot-lua # | https://github.com/zbirenbaum/copilot.lua
+    copilot-cmp # | https://github.com/zbirenbaum/copilot-cmp
+
     # Snippets
     luasnip # | https://github.com/L3MON4D3/LuaSnip
     friendly-snippets
@@ -92,6 +95,8 @@ with final.pkgs.lib; let
     ruby-lsp
     yaml-language-server
     docker-language-server
+    vscode-langservers-extracted # | https://github.com/hrsh7th/vscode-langservers-extracted - vscode-css-language-server vscode-eslint-language-server vscode-html-language-server vscode-json-language-server vscode-markdown-language-server
+    nodejs
   ];
 in {
   nvim-pkg = mkNeovim {
