@@ -20,6 +20,13 @@ map('n', '<leader>ys', function()
   require('me.yaml-schemas').select()
 end, { desc = 'Set [Y]aml [S]chema comment' })
 
+map(
+  't',
+  '<M-r>',
+  [['<C-\><C-N>"'.nr2char(getchar()).'pi']],
+  { expr = true, desc = 'Allow paste with ctrl+r <register> in terminal. including fzf-lua' }
+)
+
 -- fingers and thumbs
 cabbrev('W', 'w')
 cabbrev('Q', 'q')
