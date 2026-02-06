@@ -79,6 +79,9 @@ with final.pkgs.lib; let
     lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
     mini-icons # | https://github.com/nvim-mini/mini.icons/
 
+    # --- Navigation ---
+    mini-jump2d # | https://github.com/nvim-mini/mini.jump2d
+
     snacks-nvim # a few things | https://github.com/folke/snacks.nvim/
 
     # --- THEME ---
