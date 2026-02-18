@@ -1,16 +1,23 @@
-require("codecompanion").setup({
+local map = require('me.keymap').map
+
+require('codecompanion').setup {
   interactions = {
     chat = {
-      adapter = "openai",
+      adapter = 'openai',
     },
     inline = {
-      adapter = "openai",
+      adapter = 'openai',
     },
     cmd = {
-      adapter = "openai",
+      adapter = 'openai',
     },
   },
   opts = {
-    log_level = "DEBUG",
-  }
-})
+    log_level = 'DEBUG',
+  },
+}
+
+map({ 'v' }, '<leader><leader>a', ":<C-U>'<,'>CodeCompanion<CR>", { desc = 'AI Inline Actions' })
+map({ 'n', 'v' }, '<leader>a', '<CMD>CodeCompanionChat Toggle<CR>', { desc = 'AI Chat' })
+
+vim.cmd([[cab cc CodeCompanion]])

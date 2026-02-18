@@ -25,22 +25,22 @@ configs.setup {
       enable = true,
       -- Automatically jump forward to textobject, similar to targets.vim
       lookahead = true,
-      -- keymaps = {
-      --   ['af'] = '@function.outer',
-      --   ['if'] = '@function.inner',
-      --   ['ac'] = '@class.outer',
-      --   ['ic'] = '@class.inner',
-      --   ['aC'] = '@call.outer',
-      --   ['iC'] = '@call.inner',
-      --   ['a#'] = '@comment.outer',
-      --   ['i#'] = '@comment.outer',
-      --   ['ai'] = '@conditional.outer',
-      --   ['ii'] = '@conditional.outer',
-      --   ['al'] = '@loop.outer',
-      --   ['il'] = '@loop.inner',
-      --   ['aP'] = '@parameter.outer',
-      --   ['iP'] = '@parameter.inner',
-      -- },
+      keymaps = {
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        --   ['ac'] = '@class.outer',
+        --   ['ic'] = '@class.inner',
+        --   ['aC'] = '@call.outer',
+        --   ['iC'] = '@call.inner',
+        --   ['a#'] = '@comment.outer',
+        --   ['i#'] = '@comment.outer',
+        --   ['ai'] = '@conditional.outer',
+        --   ['ii'] = '@conditional.outer',
+        --   ['al'] = '@loop.outer',
+        --   ['il'] = '@loop.inner',
+        ['aP'] = '@parameter.outer',
+        ['iP'] = '@parameter.inner',
+      },
       -- selection_modes = {
       --   ['@parameter.outer'] = 'v', -- charwise
       --   ['@function.outer'] = 'V', -- linewise
