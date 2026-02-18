@@ -55,6 +55,8 @@ with final.pkgs.lib; let
     copilot-lua # | https://github.com/zbirenbaum/copilot.lua
     copilot-cmp # | https://github.com/zbirenbaum/copilot-cmp
 
+    codecompanion-nvim
+
     # Snippets
     luasnip # | https://github.com/L3MON4D3/LuaSnip
     friendly-snippets
