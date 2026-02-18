@@ -1,10 +1,7 @@
 require("codecompanion").setup({
   interactions = {
     chat = {
-      adapter = {
-        name = "openai",
-        model = "gpt-4.1",
-      },
+      adapter = "openai",
     },
     inline = {
       adapter = "openai",
