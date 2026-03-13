@@ -80,7 +80,7 @@ with final.pkgs.lib; let
     # --- UI ---
     lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
     mini-icons # | https://github.com/nvim-mini/mini.icons/
-    render-markdown-nvim # | https://github.com/MeanderingProgrammer/render-markdown.nvim
+    obsidian-nvim # | https://github.com/obsidian-nvim/obsidian.nvim
 
     # --- Navigation ---
     mini-jump2d # | https://github.com/nvim-mini/mini.jump2d
