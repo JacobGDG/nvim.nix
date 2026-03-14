@@ -14,6 +14,7 @@ conform.setup {
     ruby = { 'rubocop' },
     rust = { 'rustfmt' },
     python = { 'ruff' },
+    sh = { 'shfmt' },
   },
 }
 

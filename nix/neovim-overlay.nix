@@ -101,8 +101,11 @@ with final.pkgs.lib; let
     ruby-lsp
     yaml-language-server
     docker-language-server
+    bash-language-server
     vscode-langservers-extracted # | https://github.com/hrsh7th/vscode-langservers-extracted - vscode-css-language-server vscode-eslint-language-server vscode-html-language-server vscode-json-language-server vscode-markdown-language-server
     nodejs
+    shellcheck
+    shfmt
   ];
 in {
   nvim-pkg = mkNeovim {
