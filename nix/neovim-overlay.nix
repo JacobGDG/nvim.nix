@@ -52,8 +52,6 @@ with final.pkgs.lib; let
     cmp-path # file paths as completion source | https://github.com/hrsh7th/cmp-path/
     cmp-spell # | https://github.com/f3fora/cmp-spell
     cmp_luasnip # snippets autocompletion extension for nvim-cmp | https://github.com/saadparwaiz1/cmp_luasnip/
-    copilot-lua # | https://github.com/zbirenbaum/copilot.lua
-    copilot-cmp # | https://github.com/zbirenbaum/copilot-cmp
 
     codecompanion-nvim
 
@@ -80,7 +78,6 @@ with final.pkgs.lib; let
     # --- UI ---
     lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
     mini-icons # | https://github.com/nvim-mini/mini.icons/
-    obsidian-nvim # | https://github.com/obsidian-nvim/obsidian.nvim
 
     # --- Navigation ---
     mini-jump2d # | https://github.com/nvim-mini/mini.jump2d

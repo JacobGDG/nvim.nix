@@ -30,7 +30,6 @@ end
 
 local sources = {
   code_default = cmp.config.sources {
-    { name = 'copilot', group_index = 1 },
     { name = 'nvim_lsp', keyword_length = 3 },
     { name = 'nvim_lsp_signature_help', keyword_length = 3 },
     { name = 'luasnip' },
@@ -87,7 +86,6 @@ cmp.setup {
         luasnip = '[SNIP]',
         emoji = '[EMOJI]',
         spell = '[DICT]',
-        copilot = '[AI]',
       },
     },
   },
