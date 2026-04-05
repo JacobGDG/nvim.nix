@@ -27,7 +27,31 @@ with final.pkgs.lib; let
     oil-nvim # Buffer based file explorer | https://github.com/stevearc/oil.nvim
 
     # --- Navigation ---
-    nvim-treesitter.withAllGrammars
+    (nvim-treesitter.withPlugins (p:
+      with p; [
+        bash
+        css
+        csv
+        diff
+        dockerfile
+        gitcommit
+        gitignore
+        html
+        json
+        just
+        lua
+        make
+        markdown
+        markdown_inline
+        nix
+        python
+        regex
+        ruby
+        rust
+        vim
+        yaml
+      ])
+    )
     nvim-treesitter-context # nvim-treesitter-context | https://github.com/nvim-treesitter/nvim-treesitter-context
     nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
 

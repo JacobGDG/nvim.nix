@@ -41,5 +41,4 @@ require('oil').setup {
   },
 }
 
-local map = require('me.keymap').map
-map('n', '-', '<CMD>Oil<CR>', { desc = 'Open Oil' })
+require('me.keymap').map('n', '-', '<CMD>Oil<CR>', { desc = 'Open Oil' })

@@ -1,4 +1,4 @@
-map = require('me.keymap').map
+local map = require('me.keymap').map
 
 map('n', '<C-h>', require('smart-splits').move_cursor_left)
 map('n', '<C-j>', require('smart-splits').move_cursor_down)
