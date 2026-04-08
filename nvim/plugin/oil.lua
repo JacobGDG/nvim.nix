@@ -16,20 +16,6 @@ require('oil').setup {
     ['~'] = 'actions.open_cwd',
     ['g.'] = 'actions.toggle_hidden',
     ['<leader>l'] = 'actions.refresh',
-    ['yp'] = {
-      desc = 'Copy filepath to system clipboard',
-      callback = function()
-        local entry = require('oil').get_cursor_entry()
-        local dir = require('oil').get_current_dir()
-        local name = entry.name
-        if entry.type == 'directory' then
-          name = name .. '/'
-        end
-        local ab_path = dir .. name
-        local rel_path = vim.fn.fnamemodify(ab_path, ':.')
-        vim.fn.setreg('+', rel_path)
-      end,
-    },
     ['cd'] = {
       desc = 'CD into this directory in TMUX pane 2',
       callback = function()
