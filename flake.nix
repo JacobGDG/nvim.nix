@@ -2,7 +2,7 @@
   description = "Neovim derivation";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     flake-utils = {
       url = "github:numtide/flake-utils";
     };
@@ -25,7 +25,7 @@
     flake-utils,
     ...
   }: let
-    systems = builtins.attrNames nixpkgs.legacyPackages;
+    systems = ["aarch64-darwin" "x86_64-linux"];
 
     # This is where the Neovim derivation is built.
     neovim-overlay = import ./nix/neovim-overlay.nix {inherit inputs;};
