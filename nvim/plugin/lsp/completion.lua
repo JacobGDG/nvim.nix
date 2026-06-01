@@ -36,15 +36,15 @@ local sources = {
   },
   text = cmp.config.sources {
     { name = 'buffer' },
-    { name = 'emoji' },
+    -- { name = 'emoji' },
     { name = 'path' },
-    {
-      name = 'spell',
-      keyword_length = 3,
-      enable_in_context = function(_)
-        return context.in_treesitter_capture('spell')
-      end,
-    },
+    -- {
+    --   name = 'spell',
+    --   keyword_length = 3,
+    --   enable_in_context = function(_)
+    --     return context.in_treesitter_capture('spell')
+    --   end,
+    -- },
   },
   cmdline = cmp.config.sources {
     { name = 'cmdline' },

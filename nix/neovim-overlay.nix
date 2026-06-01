@@ -77,12 +77,12 @@ let
     cmp-buffer # current buffer as completion source | https://github.com/hrsh7th/cmp-buffer/
     cmp-cmdline # cmp command line suggestions
     cmp-cmdline-history # cmp command line history suggestions
-    cmp-emoji # cmp for emojies | https://github.com/hrsh7th/cmp-emoji/
+    # cmp-emoji # cmp for emojies | https://github.com/hrsh7th/cmp-emoji/
     cmp-nvim-lsp # LSP as completion source | https://github.com/hrsh7th/cmp-nvim-lsp/
     cmp-nvim-lsp-signature-help # https://github.com/hrsh7th/cmp-nvim-lsp-signature-help/
     cmp-nvim-lua # neovim lua API as completion source | https://github.com/hrsh7th/cmp-nvim-lua/
     cmp-path # file paths as completion source | https://github.com/hrsh7th/cmp-path/
-    cmp-spell # | https://github.com/f3fora/cmp-spell
+    # cmp-spell # | https://github.com/f3fora/cmp-spell
     cmp_luasnip # snippets autocompletion extension for nvim-cmp | https://github.com/saadparwaiz1/cmp_luasnip/
 
     codecompanion-nvim
@@ -96,7 +96,7 @@ let
 
     # --- GIT ---
     gitsigns-nvim # | https://github.com/lewis6991/gitsigns.nvim/
-    committia # git commit UI template | https://github.com/rhysd/committia.vim
+    committia-vim # git commit UI template | https://github.com/rhysd/committia.vim
 
     # --- Coding ---
     undotree
