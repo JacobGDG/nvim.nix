@@ -1,15 +1,23 @@
-{inputs}: final: prev:
-with final.pkgs.lib; let
+# This overlay, when applied to nixpkgs, adds the final neovim derivation to nixpkgs.
+{ inputs }:
+final: prev:
+with final.pkgs.lib;
+let
   pkgs = final;
 
   # Use this to create a plugin from a flake input
-  mkNvimPlugin = src: pname:
+  mkNvimPlugin =
+    src: pname:
     pkgs.vimUtils.buildVimPlugin {
       inherit pname src;
       version = src.lastModifiedDate;
     };
 
+  # Make sure we use the pinned nixpkgs instance for wrapNeovimUnstable,
+  # otherwise it could have an incompatible signature when applying this overlay.
   pkgs-locked = inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+
+  # This is the helper function that builds the Neovim derivation.
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {
     inherit (pkgs-locked) wrapNeovimUnstable neovimUtils;
   };
@@ -27,8 +35,8 @@ with final.pkgs.lib; let
     oil-nvim # Buffer based file explorer | https://github.com/stevearc/oil.nvim
 
     # --- Navigation ---
-    (nvim-treesitter.withPlugins (p:
-      with p; [
+    (nvim-treesitter.withPlugins (
+      p: with p; [
         bash
         css
         csv
@@ -50,8 +58,8 @@ with final.pkgs.lib; let
         rust
         vim
         yaml
-      ])
-    )
+      ]
+    ))
     nvim-treesitter-context # nvim-treesitter-context | https://github.com/nvim-treesitter/nvim-treesitter-context
     nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
 
@@ -97,7 +105,7 @@ with final.pkgs.lib; let
     # COMMENTS
     mini-comment # | https://github.com/nvim-mini/mini.comment/
     nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
-    ts-comments-nvim #  customize comment string | https://github.com/folke/ts-comments.nvim/
+    ts-comments-nvim # customize comment string | https://github.com/folke/ts-comments.nvim/
 
     # --- UI ---
     lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
@@ -128,12 +136,16 @@ with final.pkgs.lib; let
     shellcheck
     shfmt
   ];
-in {
+in
+{
   nvim-pkg = mkNeovim {
     plugins = all-plugins;
     inherit extraPackages;
   };
 
+  # This is meant to be used within a devshell.
+  # Instead of loading the lua Neovim configuration from
+  # the Nix store, it is loaded from $XDG_CONFIG_HOME/nvim-dev
   nvim-dev = mkNeovim {
     plugins = all-plugins;
     inherit extraPackages;
@@ -141,6 +153,7 @@ in {
     wrapRc = false;
   };
 
+  # This can be symlinked in the devShell's shellHook
   nvim-luarc-json = final.mk-luarc-json {
     plugins = all-plugins;
   };
