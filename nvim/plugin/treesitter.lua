@@ -1,4 +1,4 @@
-local configs = require('nvim-treesitter.configs')
+local configs = require('nvim-treesitter')
 vim.g.skip_ts_context_comment_string_module = true
 
 ---@diagnostic disable-next-line: missing-fields
