@@ -15,6 +15,7 @@ conform.setup {
     rust = { 'rustfmt' },
     python = { 'ruff' },
     sh = { 'shfmt' },
+    go = { 'gofmt' },
   },
 }
 

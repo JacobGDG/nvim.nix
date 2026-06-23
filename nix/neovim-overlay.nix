@@ -58,6 +58,7 @@ let
         rust
         vim
         yaml
+        go
       ]
     ))
     nvim-treesitter-context # nvim-treesitter-context | https://github.com/nvim-treesitter/nvim-treesitter-context
