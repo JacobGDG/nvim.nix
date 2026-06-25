@@ -95,7 +95,6 @@ let
 
     # --- GIT ---
     gitsigns-nvim # | https://github.com/lewis6991/gitsigns.nvim/
-    committia-vim # git commit UI template | https://github.com/rhysd/committia.vim
 
     # --- Coding ---
     undotree
