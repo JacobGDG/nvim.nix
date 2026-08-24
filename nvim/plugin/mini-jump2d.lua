@@ -1,11 +1,15 @@
-require('mini.jump2d').setup {
-  mappings = {},
-}
+require('mini.jump2d').setup { mappings = {} }
 local map = require('me.keymap').map
 
-map(
-  { 'n' },
-  '<CR>',
-  '<Cmd>lua MiniJump2d.start(MiniJump2d.builtin_opts.single_character)<CR>',
-  { desc = '[jump2d] single character' }
-)
+map({ 'n' }, '<CR>', function()
+  vim.api.nvim_echo({ { '2djump> ', 'ModeMsg' } }, false, {})
+  local char = vim.fn.getcharstr()
+  if char == '\27' or char == '\r' then
+    vim.api.nvim_echo({}, false, {})
+    return
+  end
+  MiniJump2d.start({
+    allowed_lines = { blank = false, fold = false },
+    spotter = MiniJump2d.gen_spotter.pattern('%f[%a%d_]' .. vim.pesc(char)),
+  })
+end, { desc = '[jump2d] to word start from char' })
