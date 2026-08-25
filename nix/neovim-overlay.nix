@@ -86,6 +86,8 @@ let
     # cmp-spell # | https://github.com/f3fora/cmp-spell
     cmp_luasnip # snippets autocompletion extension for nvim-cmp | https://github.com/saadparwaiz1/cmp_luasnip/
 
+    minuet-ai-nvim
+
     # Snippets
     luasnip # | https://github.com/L3MON4D3/LuaSnip
     friendly-snippets
