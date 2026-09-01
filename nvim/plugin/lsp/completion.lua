@@ -25,7 +25,6 @@ end
 
 local sources = {
   code_default = cmp.config.sources {
-    { name = 'minuet' },
     { name = 'nvim_lsp', keyword_length = 3 },
     { name = 'nvim_lsp_signature_help', keyword_length = 3 },
     { name = 'luasnip' },
