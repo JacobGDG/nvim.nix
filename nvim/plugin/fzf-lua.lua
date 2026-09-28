@@ -28,3 +28,13 @@ end, { desc = 'Fix spelling' })
 map('n', '<leader>r', function()
   require('fzf-lua').registers()
 end, { desc = 'Find register' })
+map('n', '<leader>t', function()
+  require('fzf-lua').fzf_exec("rg --files -g '*.tf' | sed 's|/[^/]*$||' | sort -u", {
+    prompt = 'Terraform root> ',
+    actions = {
+      ['default'] = function(selected)
+        require('oil').open(selected[1])
+      end,
+    },
+  })
+end, { desc = 'Find terraform root' })
