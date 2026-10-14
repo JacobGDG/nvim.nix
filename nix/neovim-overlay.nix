@@ -99,6 +99,7 @@ let
     # --- Coding ---
     undotree
     vim-abolish # primarily for case switching | https://github.com/tpope/vim-abolish#coercion
+    mini-operators # | https://github.com/nvim-mini/mini.operators
 
     # COMMENTS
     mini-comment # | https://github.com/nvim-mini/mini.comment/

@@ -22,7 +22,7 @@ autocmd('LspAttach', {
     map('n', 'gd', vim.lsp.buf.definition, { desc = 'lsp [g]o to [d]efinition', buffer = bufnr })
     map('n', 'gt', vim.lsp.buf.type_definition, { desc = 'lsp [g]o to [t]ype definition', buffer = bufnr })
     map('n', 'gi', vim.lsp.buf.implementation, { desc = 'lsp [g]o to [i]mplementation', buffer = bufnr })
-    map('n', 'gr', vim.lsp.buf.references, { desc = 'lsp [g]et [r]eferences', buffer = bufnr })
+    map('n', 'gR', vim.lsp.buf.references, { desc = 'lsp [g]et [R]eferences', buffer = bufnr })
 
     map('n', 'K', vim.lsp.buf.hover, { desc = '[lsp] hover', buffer = bufnr })
 
