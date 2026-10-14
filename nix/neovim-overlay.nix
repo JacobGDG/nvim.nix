@@ -129,7 +129,6 @@ with final.pkgs.lib; let
     docker-language-server
     bash-language-server
     vscode-langservers-extracted # | https://github.com/hrsh7th/vscode-langservers-extracted - vscode-css-language-server vscode-eslint-language-server vscode-html-language-server vscode-json-language-server vscode-markdown-language-server
-    nodejs
     shellcheck
     shfmt
 
@@ -138,21 +137,24 @@ with final.pkgs.lib; let
     ripgrep
     fd
   ];
-in {
-  nvim-pkg = mkNeovim {
+
+  # Shared by nvim-pkg and nvim-dev
+  common = {
     plugins = all-plugins;
     inherit extraPackages;
+    withPython3 = false; # no python remote plugins
   };
+in {
+  nvim-pkg = mkNeovim common;
 
   # This is meant to be used within a devshell.
   # Instead of loading the lua Neovim configuration from
   # the Nix store, it is loaded from $XDG_CONFIG_HOME/nvim-dev
-  nvim-dev = mkNeovim {
-    plugins = all-plugins;
-    inherit extraPackages;
-    appName = "nvim-dev";
-    wrapRc = false;
-  };
+  nvim-dev = mkNeovim (common
+    // {
+      appName = "nvim-dev";
+      wrapRc = false;
+    });
 
   # This can be symlinked in the devShell's shellHook
   nvim-luarc-json = final.mk-luarc-json {
