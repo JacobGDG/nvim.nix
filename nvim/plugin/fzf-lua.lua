@@ -10,6 +10,22 @@ require('fzf-lua').setup {
 
 require('fzf-lua').register_ui_select() -- vim.ui.select
 
+require('fzf-lua').register_extension('terraform', function(opts)
+  opts = require('fzf-lua.config').normalize_opts(opts, 'terraform')
+  if not opts then
+    return
+  end
+  return require('fzf-lua').fzf_exec(opts.cmd, opts)
+end, {
+  cmd = "rg --files -g '*.tf' | sed 's|/[^/]*$||' | sort -u",
+  prompt = 'Terraform dirs> ',
+  actions = {
+    ['default'] = function(selected)
+      require('oil').open(selected[1])
+    end,
+  },
+})
+
 map('n', '<leader>f', function()
   require('fzf-lua').builtin()
 end, { desc = 'Find finder' })
@@ -29,12 +45,5 @@ map('n', '<leader>r', function()
   require('fzf-lua').registers()
 end, { desc = 'Find register' })
 map('n', '<leader>t', function()
-  require('fzf-lua').fzf_exec("rg --files -g '*.tf' | sed 's|/[^/]*$||' | sort -u", {
-    prompt = 'Terraform root> ',
-    actions = {
-      ['default'] = function(selected)
-        require('oil').open(selected[1])
-      end,
-    },
-  })
+  require('fzf-lua').terraform()
 end, { desc = 'Find terraform root' })
