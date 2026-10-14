@@ -10,6 +10,9 @@ require('fzf-lua').setup {
 
 require('fzf-lua').register_ui_select() -- vim.ui.select
 
+---@class fzf-lua
+---@field terraform fun(opts?: table)
+
 require('fzf-lua').register_extension('terraform', function(opts)
   opts = require('fzf-lua.config').normalize_opts(opts, 'terraform')
   if not opts then
@@ -26,6 +29,9 @@ end, {
   },
 })
 
+map('n', '<leader>r', function()
+  require('fzf-lua').resume()
+end, { desc = 'Resume search' })
 map('n', '<leader>f', function()
   require('fzf-lua').builtin()
 end, { desc = 'Find finder' })
@@ -41,9 +47,6 @@ end, { desc = 'Find buffer' })
 map('n', 'z=', function()
   require('fzf-lua').spell_suggest()
 end, { desc = 'Fix spelling' })
-map('n', '<leader>r', function()
-  require('fzf-lua').registers()
-end, { desc = 'Find register' })
 map('n', '<leader>t', function()
   require('fzf-lua').terraform()
 end, { desc = 'Find terraform root' })
