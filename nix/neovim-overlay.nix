@@ -132,6 +132,11 @@ with final.pkgs.lib; let
     nodejs
     shellcheck
     shfmt
+
+    # Pickers (fzf-lua, snacks)
+    fzf
+    ripgrep
+    fd
   ];
 in {
   nvim-pkg = mkNeovim {
