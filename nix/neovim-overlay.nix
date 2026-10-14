@@ -1,13 +1,10 @@
 # This overlay, when applied to nixpkgs, adds the final neovim derivation to nixpkgs.
-{ inputs }:
-final: prev:
-with final.pkgs.lib;
-let
+{inputs}: final: prev:
+with final.pkgs.lib; let
   pkgs = final;
 
   # Use this to create a plugin from a flake input
-  mkNvimPlugin =
-    src: pname:
+  mkNvimPlugin = src: pname:
     pkgs.vimUtils.buildVimPlugin {
       inherit pname src;
       version = src.lastModifiedDate;
@@ -36,30 +33,31 @@ let
 
     # --- Navigation ---
     (nvim-treesitter.withPlugins (
-      p: with p; [
-        bash
-        css
-        csv
-        diff
-        dockerfile
-        gitcommit
-        gitignore
-        html
-        json
-        just
-        lua
-        make
-        markdown
-        markdown_inline
-        nix
-        python
-        regex
-        ruby
-        rust
-        vim
-        yaml
-        go
-      ]
+      p:
+        with p; [
+          bash
+          css
+          csv
+          diff
+          dockerfile
+          gitcommit
+          gitignore
+          html
+          json
+          just
+          lua
+          make
+          markdown
+          markdown_inline
+          nix
+          python
+          regex
+          ruby
+          rust
+          vim
+          yaml
+          go
+        ]
     ))
     nvim-treesitter-context # nvim-treesitter-context | https://github.com/nvim-treesitter/nvim-treesitter-context
     nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
@@ -135,8 +133,7 @@ let
     shellcheck
     shfmt
   ];
-in
-{
+in {
   nvim-pkg = mkNeovim {
     plugins = all-plugins;
     inherit extraPackages;

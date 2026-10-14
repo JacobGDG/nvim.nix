@@ -19,25 +19,22 @@
     # };
   };
 
-  outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      flake-utils,
-      ...
-    }:
-    let
-      systems = [
-        "aarch64-darwin"
-        "x86_64-linux"
-      ];
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    flake-utils,
+    ...
+  }: let
+    systems = [
+      "aarch64-darwin"
+      "x86_64-linux"
+    ];
 
-      # This is where the Neovim derivation is built.
-      neovim-overlay = import ./nix/neovim-overlay.nix { inherit inputs; };
-    in
+    # This is where the Neovim derivation is built.
+    neovim-overlay = import ./nix/neovim-overlay.nix {inherit inputs;};
+  in
     flake-utils.lib.eachSystem systems (
-      system:
-      let
+      system: let
         pkgs = import nixpkgs {
           inherit system;
           overlays = [
@@ -55,6 +52,7 @@
             # Tools for Lua and Nix development, useful for editing files in this repo
             lua-language-server
             nil
+            alejandra
             stylua
             luajitPackages.luacheck
             nvim-dev
@@ -66,8 +64,7 @@
             ln -Tfns $PWD/nvim ~/.config/nvim-dev
           '';
         };
-      in
-      {
+      in {
         packages = rec {
           default = nvim;
           nvim = pkgs.nvim-pkg;
